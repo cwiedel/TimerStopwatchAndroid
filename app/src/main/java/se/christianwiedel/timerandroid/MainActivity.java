@@ -69,9 +69,10 @@ public class MainActivity extends Activity implements TimerService.TimerCallback
         setContentView(R.layout.activity_main);
 
         mActionBar = getActionBar();
-        setActionBarTitle("onCreate");
         ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#ffFEBB31"));
         mActionBar.setBackgroundDrawable(colorDrawable);
+
+
         mTimerFragment = PlaceholderFragment.newInstance(0);
         mStopwatchFragment = PlaceholderFragment.newInstance(1);
 
@@ -365,10 +366,10 @@ public class MainActivity extends Activity implements TimerService.TimerCallback
 
             switch (position) {
                 case TIMER_POSITION:
-                    getActionBar().setTitle("Timer");
+                    getActionBar().setTitle(getString(R.string.actionbar_timer_title));
                     break;
                 case STOPWATCH_POSITION:
-                    getActionBar().setTitle("Stopwatch");
+                    getActionBar().setTitle(getString(R.string.actionbar_stopwatch_title));
                     break;
             }
 
@@ -378,32 +379,25 @@ public class MainActivity extends Activity implements TimerService.TimerCallback
         public int getCount() {
             return 2;
         }
-/*
-        @Override
-        public CharSequence getPageTitle(int position) {
-            Locale l = Locale.getDefault();
-            switch (position) {
-                case 0:
-                    return getString(R.string.timer_title_section).toUpperCase(l);
-                case 1:
-                    return getString(R.string.stopwatch_title_section).toUpperCase(l);
-            }
-            return null;
-        }
-        */
     }
 
     public class AlarmDialogFragment extends DialogFragment {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
-            // Use the Builder class for convenient dialog construction
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setMessage(R.string.dialog_timer_alert)
                     .setPositiveButton(R.string.alarm, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            // FIRE ZE MISSILES!
+
                             mTimerService.stopAlarm();
                             mTimerService.resetTimer();
+                            setTimerResetButton(TIMER_RESETBTN_DISABLE);
+                            setTimerStartButton(TIMER_STARTBTN_START);
+
+                            mTimerFragment.updateTimerValue(0);
+                            mTimerFragment.mTimePicker.setEnabled(true);
+                            mTimerFragment.mTimePicker.setCurrentHour(0);
+                            mTimerFragment.mTimePicker.setCurrentMinute(0);
                         }
                     });
 

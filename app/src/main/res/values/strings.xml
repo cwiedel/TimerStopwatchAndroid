@@ -22,5 +22,7 @@
     <string name="cancel">cancel alarm</string>
     <string name="dialog_timer_alert">The timer has ended!</string>
     <string name="alarm">Dismiss alarm</string>
+    <string name="actionbar_timer_title">Timer</string>
+    <string name="actionbar_stopwatch_title">Stopwatch</string>
 
 </resources>
