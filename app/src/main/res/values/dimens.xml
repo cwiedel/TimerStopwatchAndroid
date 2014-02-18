@@ -1,0 +1,13 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="bigFont">90sp</dimen>
+    <dimen name="labelFont">28sp</dimen>
+    <dimen name="listFont">22sp</dimen>
+    <dimen name="button_radius">110sp</dimen>
+    <dimen name="laps_list_top_margin">20dp</dimen>
+    <dimen name="stopwatch_tv_marginbottom">0dp</dimen>
+    <dimen name="smallLapFontSize">40sp</dimen>
+
+</resources>
